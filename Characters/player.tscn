@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0erm5gnbk2hr"]
+[gd_scene load_steps=19 format=3 uid="uid://b0erm5gnbk2hr"]
 
 [ext_resource type="Texture2D" uid="uid://bosyvyghmodq8" path="res://Assets/characters/player.png" id="1_b14sf"]
+[ext_resource type="Texture2D" uid="uid://d0swi61seeexx" path="res://Assets/Tools/Axes /Steel Axe (16x16).png" id="2_i7u0p"]
 
 [sub_resource type="Animation" id="Animation_1dtuc"]
 resource_name = "idle_down"
@@ -80,6 +81,54 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HandEquip/Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9, 7)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HandEquip/Sprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.58524]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../HandEquip/Sprite2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.688, 0.688)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../HandEquip/Sprite2D/Hitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9.84988, 20.7687)]
 }
 
 [sub_resource type="Animation" id="Animation_b0l7p"]
@@ -325,6 +374,54 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [36, 37, 38, 39]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HandEquip/Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-9, 7), Vector2(12, 13), Vector2(12, 9), Vector2(-6, 9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HandEquip/Sprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-1.58524, -5.32067, -5.91218, -4.50214]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../HandEquip/Sprite2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-0.688, 0.688), Vector2(0.688, -0.688), Vector2(0.688, -0.688)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../HandEquip/Sprite2D/Hitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10.028, 6.01609), Vector2(-9.84988, 20.7687), Vector2(-9.569, 6.70643), Vector2(-9.569, 6.70643), Vector2(-9.569, 6.70643)]
 }
 
 [sub_resource type="Animation" id="Animation_7iv6w"]
@@ -585,6 +682,9 @@ _data = {
 "walk_up": SubResource("Animation_g4c0m")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0hwp"]
+size = Vector2(8, 7)
+
 [node name="Player" type="CharacterBody2D"]
 
 [node name="Body" type="Sprite2D" parent="."]
@@ -598,3 +698,19 @@ speed_scale = 0.7
 libraries = {
 "": SubResource("AnimationLibrary_1dd6t")
 }
+
+[node name="HandEquip" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="HandEquip"]
+position = Vector2(-9, 7)
+rotation = -1.58524
+scale = Vector2(-0.688, 0.688)
+texture = ExtResource("2_i7u0p")
+
+[node name="Hitbox" type="Area2D" parent="HandEquip/Sprite2D"]
+position = Vector2(13.0909, -11.6364)
+scale = Vector2(1.45455, 1.45455)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandEquip/Sprite2D/Hitbox"]
+position = Vector2(-9.84988, 20.7687)
+shape = SubResource("RectangleShape2D_j0hwp")
